@@ -1,7 +1,7 @@
 <h2>Products</h2>
 
 <% @products.each do |product| %>
-  <h4><%= product.name %></h4>
+  <h4><a href="/products/<%= product.id %>"><%= product.name %></a></h4>
   <button type="button" class="btn btn-success">Buy</button>
   <p>price: $<%= product.price %><br>
   description: <%= product.description %></p>

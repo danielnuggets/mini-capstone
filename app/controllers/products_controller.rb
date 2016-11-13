@@ -1,21 +1,26 @@
 class ProductsController < ApplicationController
-  def display_all_products
+  def index
     @products = Product.all
-    render 'all_products.html.erb'
+    render 'index.html.erb'
   end
 
-  def add_product
-    render 'add_product.html.erb'
+  def show
+    @product = Product.find_by(id: params["id"])
+    render 'show.html.erb'
   end
 
-  def added_product_confirmation
-    contact = Product.new(
+  def new
+    render 'new.html.erb'
+  end
+
+  def create
+    product = Product.new(
       name: params["name"], 
       price: params["price"], 
       image: params["image"], 
       description: params["description"]
       )
-    contact.save
-    render 'added_product_confirmation.html.erb'
+    product.save
+    render 'create.html.erb'
   end
 end
