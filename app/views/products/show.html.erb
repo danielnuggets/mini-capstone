@@ -3,3 +3,9 @@
 <p>price: <%= @product.price %><br>
 description: <%= @product.description %></p>
 <img src=<%= @product.image %> alt="unable to display image" width="100" height="100">
+
+<%= form_tag "/products/#{@product.id}", method: :delete do %>
+<%= submit_tag 'Delete Product' %>
+<% end %>
+
+<%= link_to "Destroy", "/products/#{@product.id}", method: :delete %>
