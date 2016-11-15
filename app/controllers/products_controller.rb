@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
       description: params["description"]
       )
     product.save
-    flash[:created] = "New product created!"
+    flash[:success] = "New product created!"
     redirect_to "/products/#{product.id}"
 
   end
@@ -34,13 +34,13 @@ class ProductsController < ApplicationController
   def update
     product = Product.find_by(id: params["id"])
     product.update(name: params["name"], price: params["price"], image: params["image"], description: params["description"])
-    flash[:updated] = "Product updated!"
+    flash[:info] = "Product updated!"
     redirect_to "/products/#{product.id}"
   end
 
   def destroy
     product = Product.find_by(id: params["id"])
-    flash[:updated] = "#{product.name} deleted!"
+    flash[:danger] = "#{product.name} deleted!"
     product.destroy
     redirect_to "/products"
   end
