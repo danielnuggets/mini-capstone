@@ -1,9 +1,16 @@
 <h2>Products</h2>
 
-<% @products.each do |product| %>
-  <h4><a href="/products/<%= product.id %>"><%= product.name %></a></h4>
-  <button type="button" class="btn btn-success">Buy</button>
-  <p>price: $<%= product.price %><br>
-  description: <%= product.description %></p>
-  <img src=<%= product.image %> alt="unable to display image" width="100" height="100">
+<% @products.each_slice(3) do |three_products| %>
+  <div class="row">
+  <% three_products.each do |product| %>
+    <div class="col-md-4">
+    <h4><a href="/products/<%= product.id %>"><%= product.name %></a></h4>
+    <button type="button" class="btn btn-success">Buy</button>
+    <p>price: $<%= product.price %></p>
+    <p>description: <%= product.description %></p>
+    <p><% product.stock_status %></p>
+    <img src=<%= product.image %> alt="unable to display image" width="100" height="100">
+    </div>
+  <% end %>
+  </div>
 <% end %>

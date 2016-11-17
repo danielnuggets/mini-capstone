@@ -18,5 +18,9 @@
   <%= label_tag :description %>
   <%= text_field_tag :description, @product.description %>
 </div>
+<div>  
+  <%= label_tag :stock %>
+  <%= text_field_tag :stock, @product.stock %>
+</div>
   <%= submit_tag 'Submit' %>
 <% end %>
