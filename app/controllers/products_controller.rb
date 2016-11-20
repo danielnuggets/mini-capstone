@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
       @products = Product.order(params["sort_attribute"] => params["order"])
     elsif params["discount"] == "true"
       @products = Product.where("price < ?", 2.00)
+    elsif params["search"]
+      @products = Product.where("name LIKE ?", "%#{params["search"]}%")
     else
       @products = Product.all
     end
