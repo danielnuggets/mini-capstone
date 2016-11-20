@@ -1,11 +1,21 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    if params["sort_attribute"] && params["order"]
+      @products = Product.order(params["sort_attribute"] => params["order"])
+    elsif params["discount"] == "true"
+      @products = Product.where("price < ?", 2.00)
+    else
+      @products = Product.all
+    end
     render 'index.html.erb'
   end
 
   def show
-    @product = Product.find_by(id: params["id"])
+    if params["id"] == "random"
+      @product = Product.all.sample
+    else
+      @product = Product.find_by(id: params["id"])
+    end
     render 'show.html.erb'
   end
 
