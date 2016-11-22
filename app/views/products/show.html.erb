@@ -8,7 +8,10 @@ total: <%= number_to_currency(@product.total) %>
 <p><%= @product.sale_message %></p>
 <p>description: <%= @product.description %></p>
 <p><%= @product.stock_status %></p>
-<img src=<%= @product.image %> alt="unable to display image" width="100" height="100">
+<p>Supplier: <%= @product.supplier.name %></p>
+<% @product.images.each do |image| %>
+<img src=<%= image.link %> alt="unable to display image" width="100" height="100">
+<% end %>
 
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
 <%= submit_tag 'Delete Product' %>

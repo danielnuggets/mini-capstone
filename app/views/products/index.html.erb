@@ -9,7 +9,7 @@
     <p>price: $<%= product.price %></p>
     <p>description: <%= product.description %></p>
     <p><% product.stock_status %></p>
-    <img src=<%= product.image %> alt="unable to display image" width="100" height="100">
+    <img src=<%= product.images[0].link %> alt="unable to display image" width="100" height="100">
     </div>
   <% end %>
   </div>

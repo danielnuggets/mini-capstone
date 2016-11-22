@@ -1,0 +1,15 @@
+<h2>Suppliers</h2>
+
+<% @suppliers.each_slice(3) do |three_suppliers| %>
+  <div class="row">
+  <% three_suppliers.each do |supplier| %>
+    <div class="col-md-4">
+    <h4><a href="/suppliers/<%= supplier.id %>"><%= supplier.name %></a></h4>
+    <button type="button" class="btn btn-success">Buy</button>
+    <p>name: <%= supplier.name %></p>
+    <p>email: <%= supplier.email %></p>
+    <p>phone: <%= supplier.phone %></p>
+    </div>
+  <% end %>
+  </div>
+<% end %>

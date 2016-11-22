@@ -21,5 +21,8 @@
   <%= label_tag :stock %>
   <%= text_field_tag :stock %>
 </div>
+<div>  
+  <%= collection_select :Supplier, :supplier_id, Supplier.all, :id, :name %>
+</div>
   <%= submit_tag 'Submit' %>
 <% end %>

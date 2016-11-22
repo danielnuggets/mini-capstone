@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  belongs_to :supplier
+  has_many :images
+
   def sale_message
     if price < 2
       return "Discount Item!"
@@ -8,7 +11,7 @@ class Product < ApplicationRecord
   end
 
   def style_message
-    if price <2
+    if price < 2
       return "red"
     else
       return ""

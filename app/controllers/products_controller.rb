@@ -31,7 +31,8 @@ class ProductsController < ApplicationController
       price: params["price"], 
       image: params["image"], 
       description: params["description"],
-      stock: params["stock"]
+      stock: params["stock"],
+      supplier_id: params["Supplier"]["supplier_id"]
     )
     product.save
     flash[:success] = "New product created!"
@@ -46,7 +47,14 @@ class ProductsController < ApplicationController
 
   def update
     product = Product.find_by(id: params["id"])
-    product.update(name: params["name"], price: params["price"], image: params["image"], description: params["description"], stock: params["stock"])
+    product.update(
+      name: params["name"], 
+      price: params["price"], 
+      image: params["image"], 
+      description: params["description"], 
+      stock: params["stock"], 
+      supplier_id: params["Supplier"]["supplier_id"]
+      )
     flash[:info] = "Product updated!"
     redirect_to "/products/#{product.id}"
   end
