@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    product = Product.find_by(id: params["id"])
+    product = Product.find_by(id: params[:product_id])
     Image.create(
       link: params["link"],
       product_id: product.id

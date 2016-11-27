@@ -4,6 +4,7 @@
   <div>
     <%= label_tag :link %>
     <%= text_field_tag :link %>
+    <%= hidden_field_tag :product_id, params[:product_id] %>
   </div>
   <%= submit_tag 'Submit' %>
 <% end %>

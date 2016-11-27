@@ -21,7 +21,7 @@ total: <%= number_to_currency(@product.total) %>
 
 <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit Product</a>
 
-<%= form_tag '/orders', method: :post do %>
+<%= form_tag "/orders", method: :post do %>
   <%= label_tag :quantity %>
   <%= text_field_tag :quantity %>
   <%= hidden_field_tag :product_id, @product.id %>
