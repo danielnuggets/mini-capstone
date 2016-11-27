@@ -17,4 +17,13 @@ total: <%= number_to_currency(@product.total) %>
 <%= submit_tag 'Delete Product' %>
 <% end %>
 
+<a href="/images/<%= @product.id %>/new" class="btn btn-info" role="button">Add A Picture</a>
+
 <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit Product</a>
+
+<%= form_tag '/orders', method: :post do %>
+  <%= label_tag :quantity %>
+  <%= text_field_tag :quantity %>
+  <%= hidden_field_tag :product_id, @product.id %>
+  <%= submit_tag 'Buy Now!' %>
+<% end %>

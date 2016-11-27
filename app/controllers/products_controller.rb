@@ -29,7 +29,6 @@ class ProductsController < ApplicationController
     product = Product.new(
       name: params["name"], 
       price: params["price"], 
-      image: params["image"], 
       description: params["description"],
       stock: params["stock"],
       supplier_id: params["Supplier"]["supplier_id"]
@@ -37,7 +36,6 @@ class ProductsController < ApplicationController
     product.save
     flash[:success] = "New product created!"
     redirect_to "/products/#{product.id}"
-
   end
 
   def edit
@@ -50,7 +48,6 @@ class ProductsController < ApplicationController
     product.update(
       name: params["name"], 
       price: params["price"], 
-      image: params["image"], 
       description: params["description"], 
       stock: params["stock"], 
       supplier_id: params["Supplier"]["supplier_id"]

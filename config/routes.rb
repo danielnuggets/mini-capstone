@@ -8,6 +8,18 @@ Rails.application.routes.draw do
   patch '/products/:id' => 'products#update'
   delete '/products/:id' => 'products#destroy'
 
+  get '/images/:product_id/new' => 'images#new'
+  post '/images' => 'images#create'
+
   get '/suppliers' => 'suppliers#index'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  post '/orders' => 'orders#create'
+  get 'orders/:id' => 'orders#show'
 
 end
