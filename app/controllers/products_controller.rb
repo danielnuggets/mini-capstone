@@ -18,7 +18,6 @@ class ProductsController < ApplicationController
     else
       @product = Product.find_by(id: params["id"])
     end
-    render 'show.html.erb'
   end
 
   def new

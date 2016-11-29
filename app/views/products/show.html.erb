@@ -1,4 +1,10 @@
 <h3><%= @product.name %></h3>
+<ul><h4>Categories:</h4>
+<% @product.categories.each do |category| %>
+  <li><%= category.name %></li>
+<% end %>
+</ul>
+<p></p>
 <button type="button" class="btn btn-success">Buy</button>
 <p class=<%=@product.style_message %>>
 price: <%= number_to_currency(@product.price) %>
@@ -27,3 +33,5 @@ total: <%= number_to_currency(@product.total) %>
   <%= hidden_field_tag :product_id, @product.id %>
   <%= submit_tag 'Buy Now!' %>
 <% end %>
+
+
