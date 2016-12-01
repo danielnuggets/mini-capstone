@@ -2,14 +2,20 @@
 
 <p>Order ID: <%= @order.id %></p>
 <p>User ID: <%= @order.user_id %></p>
-<p>Order Quantity: <%= @order.quantity %></p>
-<p>Product: <%= @order.product.name %></p>
+
+<% @order.carted_products.each do |carted_product| %>
+  <p>
+  <div>Item: <%= carted_product.product.name %></div>
+  <div>Quantity: <%= carted_product.quantity %></div>
+  <div>Price: <%= number_to_currency(carted_product.product.price) %></div>
+  </p>
+<% end %>
+
 <p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
 <p>Tax: <%= number_to_currency(@order.tax) %></p>
 <p>Total: <%= number_to_currency(@order.total) %></p>
 <p>Email: <%= @order.user.email %></p>
 <p>Order Created at: <%= @order.created_at %></p>
-<img src=<%= @order.product.images[0].link %> alt="unable to display image" width="100" height="100">
 
 
 

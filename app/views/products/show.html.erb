@@ -5,7 +5,7 @@
 <% end %>
 </ul>
 <p></p>
-<button type="button" class="btn btn-success">Buy</button>
+
 <p class=<%=@product.style_message %>>
 price: <%= number_to_currency(@product.price) %>
 tax: <%= number_to_currency(@product.tax) %>
@@ -27,11 +27,11 @@ total: <%= number_to_currency(@product.total) %>
 
 <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit Product</a>
 
-<%= form_tag "/orders", method: :post do %>
+<%= form_tag "/carted_products", method: :post do %>
   <%= label_tag :quantity %>
   <%= text_field_tag :quantity %>
   <%= hidden_field_tag :product_id, @product.id %>
-  <%= submit_tag 'Buy Now!' %>
+  <%= submit_tag 'Add to Cart' %>
 <% end %>
 
 
