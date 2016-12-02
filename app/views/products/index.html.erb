@@ -5,7 +5,6 @@
   <% three_products.each do |product| %>
     <div class="col-md-4">
     <h4><a href="/products/<%= product.id %>"><%= product.name %></a></h4>
-    <button type="button" class="btn btn-success">Buy</button>
     <p>price: <%= number_to_currency(product.price) %></p>
     <p>description: <%= product.description %></p>
     <p><% product.stock_status %></p>
