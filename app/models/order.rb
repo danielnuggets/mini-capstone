@@ -19,7 +19,7 @@ class Order < ApplicationRecord
     calculate_subtotal + calculate_tax
   end
 
-  def update_subtotal_tax_and_total
+  def update_subtotal_tax_and_total 
     update(
       subtotal: calculate_subtotal,
       tax: calculate_tax,

@@ -19,13 +19,15 @@ total: <%= number_to_currency(@product.total) %>
 <img src=<%= image.link %> alt="unable to display image" width="100" height="100">
 <% end %>
 
-<%= form_tag "/products/#{@product.id}", method: :delete do %>
-<%= submit_tag 'Delete Product' %>
+<% if current_user && current_user[:admin] %>
+  <%= form_tag "/products/#{@product.id}", method: :delete do %>
+  <%= submit_tag 'Delete Product' %>
+  <% end %>
+
+  <a href="/images/<%= @product.id %>/new" class="btn btn-info" role="button">Add A Picture</a>
+
+  <a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit Product</a>
 <% end %>
-
-<a href="/images/<%= @product.id %>/new" class="btn btn-info" role="button">Add A Picture</a>
-
-<a href="/products/<%= @product.id %>/edit" class="btn btn-info" role="button">Edit Product</a>
 
 <%= form_tag "/carted_products", method: :post do %>
   <%= label_tag :quantity %>

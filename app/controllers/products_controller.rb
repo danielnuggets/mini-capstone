@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     if params["sort_attribute"] && params["order"]
       @products = Product.order(params["sort_attribute"] => params["order"])
@@ -23,20 +25,25 @@ class ProductsController < ApplicationController
   end
 
   def new
-    render 'new.html.erb'
+    @product = Product.new
   end
 
   def create
-    product = Product.new(
+    @product = Product.new(
       name: params["name"], 
       price: params["price"], 
       description: params["description"],
       stock: params["stock"],
       supplier_id: params["Supplier"]["supplier_id"]
     )
-    product.save
-    flash[:success] = "New product created!"
-    redirect_to "/products/#{product.id}"
+
+    if @product.save
+      flash[:success] = "New product created!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render 'new.html.erb'
+    end
+
   end
 
   def edit
@@ -45,16 +52,21 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find_by(id: params["id"])
-    product.update(
+    @product = Product.find_by(id: params["id"])
+    @product.assign_attributes(
       name: params["name"], 
       price: params["price"], 
       description: params["description"], 
       stock: params["stock"], 
       supplier_id: params["Supplier"]["supplier_id"]
       )
-    flash[:info] = "Product updated!"
-    redirect_to "/products/#{product.id}"
+
+    if @product.save
+      flash[:info] = "Product updated!"
+      redirect_to "/products/#{@product.id}"
+    else
+      render 'edit.html.erb'
+    end
   end
 
   def destroy

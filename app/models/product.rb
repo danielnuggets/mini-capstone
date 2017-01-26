@@ -1,5 +1,8 @@
 class Product < ApplicationRecord
-  belongs_to :supplier
+  validates :name, presence: true
+  validates :price, numericality: {greater_than: 0, less_than_or_equal_to: 100000}
+  validates :stock, inclusion: { in: [true, false] }
+  belongs_to :supplier, optional: true
   has_many :images
   has_many :product_categories
   has_many :categories, through: :product_categories

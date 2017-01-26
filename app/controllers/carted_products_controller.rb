@@ -1,4 +1,6 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @carted_products = user_carted_products
     if @carted_products.count < 1
